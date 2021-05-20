@@ -21,7 +21,7 @@ class AppController extends Controller
         $sort = $request->input('sort');
 
         try {
-            $url = $baseUrl . '/search/xrepositories?q=' . $query . '&page=1&per_page=10&sort=' . $sort;
+            $url = $baseUrl . '/search/repositories?q=' . $query . '&page=1&per_page=10&sort=' . $sort;
             $response = Http::get($url);
 
             return view('index', [
