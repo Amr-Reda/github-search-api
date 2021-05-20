@@ -25,11 +25,19 @@
                     @csrf
                     <div class="form-group mx-sm-3">
                         <input type="text" class="form-control" id="search" value="{{$search ?? ''}}" name="search" placeholder="Search for tech" required>
-                        <select class="custom-select ml-2" name="sort">
-                            <option value="" selected>Sort: Best match</option>
-                            <option value="stars">Sort: Stars</option>
-                            <option value="forks">Sort: Forks</option>
-                        </select>
+                        @if (isset($sort))
+                            <select class="custom-select ml-2" name="sort">
+                                <option value=""  {{ $sort  === '' ? 'selected' : '' }}>Sort: Best match</option>
+                                <option value="stars" {{ $sort  === 'stars' ? 'selected' : '' }}>Sort: Stars</option>
+                                <option value="forks" {{ $sort  === 'forks' ? 'selected' : '' }}>Sort: Forks</option>
+                            </select>
+                        @else
+                            <select class="custom-select ml-2" name="sort">
+                                <option value=""  selected>Sort: Best match</option>
+                                <option value="stars">Sort: Stars</option>
+                                <option value="forks">Sort: Forks</option>
+                            </select>
+                        @endif
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
