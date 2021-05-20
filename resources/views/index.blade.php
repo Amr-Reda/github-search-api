@@ -15,8 +15,13 @@
     </head>
     <body>
         <div class="container">
+            @if ($error ?? '')
+                <div class="alert alert-danger">
+                    {{$error}}
+                </div>
+            @endif
             <div class="my-5 d-flex justify-content-center">
-                <form class="form-inline" id="searchForm" action="/search" method="POST">
+                <form class="form-inline" id="searchForm" action="/" method="POST">
                     @csrf
                     <div class="form-group mx-sm-3">
                         <input type="text" class="form-control" id="search" value="{{$search ?? ''}}" name="search" placeholder="Search for tech" required>
